@@ -257,6 +257,11 @@ async function processEmail(msg) {
       // Get AI summary
       const summary = await run(cleanContent); // Directly assign the returned value
 
+      if(summary === "invalid"){
+        console.log("invalid mail");
+        return; 
+      }
+
       const message = `📧 *New Email*\nFrom: ${from.text.replace(
         /[<>]/g,
         ""
